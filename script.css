@@ -1,0 +1,23 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+#gameBoard {
+    background-color: #ffffff;
+    border: solid 10px black;
+    padding: 20px;
+    width: 1000px;
+    height: 700px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.dollar {
+    background-image: url("https://images.vexels.com/media/users/3/135826/isolated/preview/2d73c63013103668eb2db03015afd969-dollar-bill-bundle-by-vexels.png");
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+}
