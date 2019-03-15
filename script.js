@@ -35,6 +35,12 @@ let makeNew = function(){
     })
 
     dollarsArr = [...document.getElementsByClassName('dollar')]
+
+    dollarsArr.forEach(dollar => {
+        dollar.id = 'notchosen'
+    })
+
+    chooseRandom(dollarsArr)
 }
 
 let addClick = function() {
