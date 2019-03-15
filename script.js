@@ -1,6 +1,9 @@
+//Global Variables
 let dollarsArr = [...document.getElementsByClassName('dollar')]
 let gameboard = document.getElementById('gameBoard');
+let stats = document.getElementById('stats')
 
+//Choose Random Box Helper Function
 let chooseRandom = function(domElemArr) {
     let len = domElemArr.length
     let chosen = domElemArr[Math.floor(Math.random() * len)]
@@ -9,33 +12,36 @@ let chooseRandom = function(domElemArr) {
     chosen.id = 'chosen';
 }
 
+//Make New Dollars Function
 let makeNew = function(){
-    let numBoxes = dollarsArr.length;
-    let newBoxes = []
-    for (let i = 0; i < numBoxes; i++) {
+    let numDollars = dollarsArr.length;
+    let newDollars = []
+    //Double the dollars each time chosen box is clicked
+    for (let i = 0; i < numDollars; i++) {
         let newBox = document.createElement('div');
-        newBox.style.cssText = `top: ${Math.floor(Math.random() * 680)}px; left: ${Math.floor(Math.random() * 980)}px`;
+        newBox.style.cssText = `top: ${15 + Math.floor(Math.random() * 680)}px; left: ${15 + Math.floor(Math.random() * 960)}px`;
         newBox.className = 'dollar'
         newBox.id = 'notchosen'
         gameboard.appendChild(newBox)
-        newBoxes.push(newBox)
+        newDollars.push(newBox)
     }
-
-    newBoxes.forEach(dollar => {
+    //Add event listener to new boxes
+    newDollars.forEach(dollar => {
         dollar.addEventListener('click', function() {
             if (dollar.id === 'chosen') {
                 makeNew();
-                console.log('dollarsArr', dollarsArr)
+                stats.innerHTML = `1/${dollarsArr.length}`
             } else if (dollar.id === 'notchosen') {
                 gameboard.removeChild(dollar);
                  dollarsArr = [...document.getElementsByClassName('dollar')];
-                 console.log('dollarsArr after delete', dollarsArr)
+                 stats.innerHTML = `1/${dollarsArr.length}`
             }
         })
     })
-
+    //Ensure all boxes are in dollarsArr
     dollarsArr = [...document.getElementsByClassName('dollar')]
 
+    //Make all dollar ids 'notchosen' so we can choose a new random chosen dollar
     dollarsArr.forEach(dollar => {
         dollar.id = 'notchosen'
     })
@@ -43,20 +49,22 @@ let makeNew = function(){
     chooseRandom(dollarsArr)
 }
 
+//Add event listener to initial dollars
 let addClick = function() {
     dollarsArr.forEach(dollar => {
         dollar.addEventListener('click', function() {
             if (dollar.id === 'chosen') {
                 makeNew();
-                console.log('dollarsArr', dollarsArr)
+                stats.innerHTML = `1/${dollarsArr.length}`
             } else if (dollar.id === 'notchosen') {
                 gameboard.removeChild(dollar);
                  dollarsArr = [...document.getElementsByClassName('dollar')];
-                 console.log('dollarsArr after delete', dollarsArr)
+                 stats.innerHTML = `1/${dollarsArr.length}`
             }
         })
     })
 }
 
+//Initialize the gameboard
 chooseRandom(dollarsArr)
 addClick()
