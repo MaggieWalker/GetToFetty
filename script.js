@@ -3,6 +3,15 @@ let dollarsArr = [...document.getElementsByClassName('dollar')]
 let gameboard = document.getElementById('gameBoard');
 let stats = document.getElementById('stats')
 
+//Winning function
+let didYouWin = function() {
+    if (stats.innerHTML === '1/738') {
+        console.log('You win!')
+        //Play Fetty Wap!
+    }
+}
+
+
 //Choose Random Box Helper Function
 let chooseRandom = function(domElemArr) {
     let len = domElemArr.length
@@ -31,10 +40,12 @@ let makeNew = function(){
             if (dollar.id === 'chosen') {
                 makeNew();
                 stats.innerHTML = `1/${dollarsArr.length}`
+                didYouWin()
             } else if (dollar.id === 'notchosen') {
                 gameboard.removeChild(dollar);
                  dollarsArr = [...document.getElementsByClassName('dollar')];
                  stats.innerHTML = `1/${dollarsArr.length}`
+                 didYouWin()
             }
         })
     })
@@ -56,10 +67,12 @@ let addClick = function() {
             if (dollar.id === 'chosen') {
                 makeNew();
                 stats.innerHTML = `1/${dollarsArr.length}`
+                didYouWin()
             } else if (dollar.id === 'notchosen') {
                 gameboard.removeChild(dollar);
                  dollarsArr = [...document.getElementsByClassName('dollar')];
                  stats.innerHTML = `1/${dollarsArr.length}`
+                 didYouWin()
             }
         })
     })
