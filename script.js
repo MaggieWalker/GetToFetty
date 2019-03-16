@@ -6,7 +6,7 @@ let stats = document.getElementById('stats')
 //Winning function
 let didYouWin = function() {
     if (stats.innerHTML === '1/738') {
-        console.log('You win!')
+        return window.open('https://www.youtube.com/watch?v=SakjVgrK4ug&feature=youtu.be', window)
         //Play Fetty Wap!
     }
 }
